@@ -1,45 +1,51 @@
+//package com.pjsoft.kotlingames.games
+package games
 
-package com.pjsoft.kotlingames.games
-//adivina un numero
-//se debe seleccionar un numero dentro de un rango
-//la computadora debe ser capaz de seleccionar ese numero
-//el progrma debe solicitar al usuario ingresar la suposicio
-//debe de asegurarse recivbir numeros validos
-//el juego termina cuando el jugador acierta el numero
-fun main(){
-    val range = 1 .. 10
-    val numberToGuess=range.random()
-    var attemp = 0
-    println("Bienvenido al juego de Adivina al Numero")
-    println("Estoy pensando de un numero del 1 al 10. adivinalo")
-    //? o !!
-    var guess = readlnOrNull()?.toIntOrNull()
+// Adivina un número
+// Se debe seleccionar un número dentro de un rango
+// La computadora debe ser capaz de seleccionar ese número
+// El programa debe solicitar al usuario ingresar la suposición
+// Debe de asegurarse de recibir números válidos
+// El juego termina cuando el jugador acierta el número
+
+fun main() {
+    val range = 1..10
+    val numberToGuess = range.random()
+    var attempts = 0
+    var guess: Int? = null
+
+    println("Bienvenido al juego de Adivina el Número")
+    println("Estoy pensando en un número del 1 al 10. ¡Adivínalo!")
 
     do {
-        var guess = readlnOrNull()?.toIntOrNull()
-        println("Ingresa tu suposicion")
-        if (guess!= null)
-            attemp++
-        when{
-            guess < numberToGuess -> println("wl numero es mayor")
-            guess > numberToGuess -> println("wl numero es menor")
-            else -> println("Felicidades, le atinaste en $attemp intentos")
+        print("Ingresa tu suposición: ")
+        guess = readlnOrNull()?.toIntOrNull()
 
+        if (guess != null){
+            attempts++
+
+            when {
+                guess < numberToGuess -> println("El número es mayor.")
+                guess < numberToGuess -> println("El número es menor.")
+                else -> println("¡Felicidades! Le atinaste en $attempts intentos.")
+            }
         }
+
 //        if(guess != null){
-//            //el numero que se pasa es valido
+//            // El número que se pasa es válido
 //            if(guess == numberToGuess){
-//                println("falicidades le atinaste")
+//                println("Felicidades, le atinaste")
 //            } else if (guess > numberToGuess){
-//                println(El numero es menor)
+//                println("El número es menor")
 //            }
 //            else if (guess < numberToGuess){
-//                println(El numero es mayor)
+//                println("El número es mayor")
 //            }
+
         else {
-            //no es el numero
-            println("Sigue intentando")
-        } }
-}
-while (guess != numberToGuess)
+            // No es un número válido
+            println("Por favor, ingresa un número válido.")
+        }
+
+    } while (guess != numberToGuess)
 }
